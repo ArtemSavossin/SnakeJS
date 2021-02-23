@@ -21,7 +21,7 @@ let dx = 10;
 // Vertical velocity
 let dy = 0;
 
-// Get the canvas element
+// Get the snakeboard_ctx element
 const snakeboard = document.getElementById('snakeboard');
 // Return a two dimensional drawing context
 const snakeboard_ctx = snakeboard.getContext('2d');
@@ -35,6 +35,20 @@ document.addEventListener('keydown', change_direction);
 // main function called repeatedly to keep the game running
 function main() {
   if (has_game_ended()) {
+    snakeboard_ctx.font = '50px serif';
+    snakeboard_ctx.textAlign = 'center';
+    snakeboard_ctx.textBaseline = 'middle';
+    snakeboard_ctx.fillStyle = 'red';
+    snakeboard_ctx.fillText(
+      'GAME OVER',
+      snakeboard.width / 2,
+      snakeboard.height / 2
+    );
+    snakeboard_ctx.strokeText(
+      'GAME OVER',
+      snakeboard.width / 2,
+      snakeboard.height / 2
+    );
     return;
   }
 
@@ -49,19 +63,19 @@ function main() {
   }, 100);
 }
 
-// draw a border around the canvas
+// draw a border around the snakeboard_ctx
 function clear_board() {
   //  Select the colour to fill the drawing
   snakeboard_ctx.fillStyle = board_background;
-  //  Select the colour for the border of the canvas
+  //  Select the colour for the border of the snakeboard_ctx
   snakeboard_ctx.strokestyle = board_border;
-  // Draw a "filled" rectangle to cover the entire canvas
+  // Draw a "filled" rectangle to cover the entire snakeboard_ctx
   snakeboard_ctx.fillRect(0, 0, snakeboard.width, snakeboard.height);
-  // Draw a "border" around the entire canvas
+  // Draw a "border" around the entire snakeboard_ctx
   snakeboard_ctx.strokeRect(0, 0, snakeboard.width, snakeboard.height);
 }
 
-// Draw the snake on the canvas
+// Draw the snake on the snakeboard_ctx
 function drawSnake() {
   // Draw each part
   snake.forEach(drawSnakePart);
