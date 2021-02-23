@@ -1,0 +1,11 @@
+* {
+  background-color: blue;
+}
+
+#snakeboard {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -25%);
+  border-width: 5px;
+}
