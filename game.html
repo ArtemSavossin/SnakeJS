@@ -10,18 +10,20 @@
   </head>
 
   <body>
-    <canvas id="snakeboard" width="400" height="400"></canvas>
-    <div class="game">
-      <div id="score">Score: 0</div>
-      <button className="game__btn" id="start">start</button>
-      <button className="game__btn" id="restart">restart</button>
-      <div class="controls">
-        <button id="up-btn" class="controls__btn">up</button>
-        <div class="controls__group">
-          <button id="left-btn" class="controls__btn">left</button>
-          <button id="right-btn" class="controls__btn">right</button>
+    <div class="field">
+      <canvas id="snakeboard" width="400" height="400"></canvas>
+      <div class="game">
+        <div id="score">Score: 0</div>
+        <button className="game__btn" id="start">start</button>
+        <button className="game__btn" id="restart">restart</button>
+        <div class="controls">
+          <button id="up-btn" class="controls__btn">up</button>
+          <div class="controls__group">
+            <button id="left-btn" class="controls__btn">left</button>
+            <button id="right-btn" class="controls__btn">right</button>
+          </div>
+          <button id="down-btn" class="controls__btn">down</button>
         </div>
-        <button id="down-btn" class="controls__btn">down</button>
       </div>
     </div>
   </body>
