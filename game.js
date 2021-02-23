@@ -18,6 +18,7 @@ let snake = [
 let score = 0;
 let bestScore = 0;
 let traps = [];
+let tickRate = 100;
 // True if changing direction
 let changing_direction = false;
 // Horizontal velocity
@@ -33,7 +34,24 @@ const snakeboard = document.getElementById('snakeboard');
 const snakeboard_ctx = snakeboard.getContext('2d');
 // Start game
 clear_board();
+
+snakeboard_ctx.font = '18px serif';
+snakeboard_ctx.textAlign = 'center';
+snakeboard_ctx.textBaseline = 'middle';
+snakeboard_ctx.fillStyle = 'green';
+snakeboard_ctx.fillText(
+  'Use arrows or buttons on screen to control snake',
+  snakeboard.width / 2,
+  snakeboard.height / 2
+);
+snakeboard_ctx.strokeText(
+  'Use arrows or buttons on screen to control snake',
+  snakeboard.width / 2,
+  snakeboard.height / 2
+);
+
 document.getElementById('start').addEventListener('click', function () {
+  clear_board();
   main();
   gen_food();
 });
@@ -50,6 +68,8 @@ document.getElementById('restart').addEventListener('click', function () {
   traps = [];
 
   document.getElementById('score').innerHTML = `Score: ${score}`;
+  clear_board();
+
   main();
   gen_food();
 });
@@ -103,7 +123,7 @@ function main() {
     drawTraps();
     // Repeat
     main();
-  }, 100);
+  }, tickRate);
 }
 
 // draw a border around the snakeboard_ctx
@@ -240,8 +260,12 @@ function move_snake() {
     // Generate new food location
     gen_food();
     if (score % 50 === 0) {
-      for (let i = 0; i < (score / 50) ** 2; ++i) {
+      const trapsAmount = (score / 50) ** 2 <= 25 ? (score / 50) ** 2 : 25;
+      for (let i = 0; i < trapsAmount; ++i) {
         gen_trap();
+      }
+      if (score / 50 >= 10) {
+        tickRate = 50;
       }
     }
   } else {
