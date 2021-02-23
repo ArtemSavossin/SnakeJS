@@ -1,3 +1,7 @@
+const LEFT_KEY = 37;
+const RIGHT_KEY = 39;
+const UP_KEY = 38;
+const DOWN_KEY = 40;
 const board_border = 'black';
 const board_background = 'white';
 const snake_col = 'lightblue';
@@ -42,6 +46,8 @@ document.getElementById('restart').addEventListener('click', function () {
     { x: 160, y: 200 },
   ];
   score = 0;
+
+  document.getElementById('score').innerHTML = `Score: ${score}`;
   main();
 
   gen_food();
@@ -145,11 +151,6 @@ function gen_food() {
 }
 
 function change_direction(event) {
-  const LEFT_KEY = 37;
-  const RIGHT_KEY = 39;
-  const UP_KEY = 38;
-  const DOWN_KEY = 40;
-  console.log(event);
   // Prevent the snake from reversing
 
   if (changing_direction) return;
@@ -187,7 +188,7 @@ function move_snake() {
     // Increase score
     score += 10;
     // Display score on screen
-    document.getElementById('score').innerHTML = score;
+    document.getElementById('score').innerHTML = `Score: ${score}`;
     // Generate new food location
     gen_food();
   } else {
