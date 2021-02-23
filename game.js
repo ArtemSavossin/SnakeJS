@@ -52,6 +52,19 @@ document.getElementById('restart').addEventListener('click', function () {
 
   gen_food();
 });
+
+document
+  .getElementById('up-btn')
+  .addEventListener('click', () => change_direction({ keyCode: UP_KEY }));
+document
+  .getElementById('down-btn')
+  .addEventListener('click', () => change_direction({ keyCode: DOWN_KEY }));
+document
+  .getElementById('left-btn')
+  .addEventListener('click', () => change_direction({ keyCode: LEFT_KEY }));
+document
+  .getElementById('right-btn')
+  .addEventListener('click', () => change_direction({ keyCode: RIGHT_KEY }));
 document.addEventListener('keydown', change_direction);
 
 // main function called repeatedly to keep the game running
