@@ -16,6 +16,7 @@ let snake = [
 ];
 
 let score = 0;
+let bestScore = 0;
 let traps = [];
 // True if changing direction
 let changing_direction = false;
@@ -84,6 +85,12 @@ function main() {
       snakeboard.width / 2,
       snakeboard.height / 2
     );
+    if (score > bestScore) {
+      bestScore = score;
+      document.getElementById(
+        'best-score'
+      ).innerHTML = `Best score: ${bestScore}`;
+    }
     return;
   }
 
@@ -233,7 +240,7 @@ function move_snake() {
     // Generate new food location
     gen_food();
     if (score % 50 === 0) {
-      for (let i = 0; i < score / 50; ++i) {
+      for (let i = 0; i < (score / 50) ** 2; ++i) {
         gen_trap();
       }
     }
