@@ -26,10 +26,26 @@ const snakeboard = document.getElementById('snakeboard');
 // Return a two dimensional drawing context
 const snakeboard_ctx = snakeboard.getContext('2d');
 // Start game
-main();
+clear_board();
+document.getElementById('start').addEventListener('click', function () {
+  main();
 
-gen_food();
+  gen_food();
+});
 
+document.getElementById('restart').addEventListener('click', function () {
+  snake = [
+    { x: 200, y: 200 },
+    { x: 190, y: 200 },
+    { x: 180, y: 200 },
+    { x: 170, y: 200 },
+    { x: 160, y: 200 },
+  ];
+  score = 0;
+  main();
+
+  gen_food();
+});
 document.addEventListener('keydown', change_direction);
 
 // main function called repeatedly to keep the game running
